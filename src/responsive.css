@@ -290,6 +290,7 @@
         height: 26px;
     }
     .vertical-timeline{padding-left: 15px;}
+    .empty-state__image img{max-width: 200px;}
 }
 
 @media (max-width: 575px) {
