@@ -53,6 +53,7 @@
 
     .app-content {
         padding: 10px;gap: 10px;
+        min-height: 100vh;
     }
 
     .app-header {
@@ -91,7 +92,7 @@
     }
 
 
-    .app-main{padding: 5px;max-width: 100%;overflow-x: hidden;}
+    .app-main{padding: 5px;max-width: 100%;overflow-x: hidden;flex: 1;}
     .filter-group{flex-wrap: wrap;}
     .advavanced-card{padding: 12px !important;}
     
