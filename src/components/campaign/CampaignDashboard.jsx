@@ -1,0 +1,394 @@
+import React from "react";
+
+const CampaignDashboard = () => {
+  return (
+    <div className="campaign-dashboard-container">
+      {/* 2. Campaign Stepper (Consistency with previous steps) */}
+      <div className="advance-card mb-3 border">
+        <div className="card-body p-0">
+          <div className="stepper-horizontal d-flex gap-lg-4 gap-2 align-items-center px-4 py-2">
+            {[
+              { id: 1, title: "Define Target Audience", icon: "target" },
+              { id: 2, title: "Sender Profiles", icon: "user" },
+              { id: 3, title: "Settings", icon: "settings" },
+              { id: 4, title: "Stats", icon: "stats" },
+            ].map((step, index) => (
+              <React.Fragment key={step.id}>
+                <div className={`step-item d-flex align-items-center ${4 === step.id ? 'active' : ''} ${4 > step.id ? 'completed' : ''}`}>
+                  <div className="step-icon-wrapper me-2">
+                    {step.id === 1 && (
+                      <svg width={18} height={18} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.25 4.5H15.75" stroke={4 === 1 ? "white" : "#3666EE"} strokeWidth="1.125" strokeLinecap="round" />
+                        <path d="M8.25 9H15.75" stroke={4 === 1 ? "white" : "#3666EE"} strokeWidth="1.125" strokeLinecap="round" />
+                        <path d="M8.25 13.5H15.75" stroke={4 === 1 ? "white" : "#3666EE"} strokeWidth="1.125" strokeLinecap="round" />
+                        <path d="M2.25 5.54464C2.25 5.54464 3 6.03349 3.375 6.75C3.375 6.75 4.5 3.9375 6 3" stroke={4 === 1 ? "white" : "#3666EE"} strokeWidth="1.125" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M2.25 13.7947C2.25 13.7947 3 14.2835 3.375 15C3.375 15 4.5 12.1875 6 11.25" stroke={4 === 1 ? "white" : "#3666EE"} strokeWidth="1.125" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    )}
+                    {step.id === 2 && (
+                      <svg width={18} height={18} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.25 5.625C11.25 3.55393 9.57105 1.875 7.5 1.875C5.42893 1.875 3.75 3.55393 3.75 5.625C3.75 7.69605 5.42893 9.375 7.5 9.375C9.57105 9.375 11.25 7.69605 11.25 5.625Z" stroke={4 === 2 ? "white" : "#3666EE"} strokeWidth="1.125" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M2.25 14.625C2.25 11.7255 4.60051 9.375 7.5 9.375C8.3052 9.375 9.06802 9.55628 9.75 9.8802" stroke={4 === 2 ? "white" : "#3666EE"} strokeWidth="1.125" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M11.6454 11.1981C13.0594 10.7161 13.7664 10.4751 14.1466 10.8553C14.5269 11.2356 14.2859 11.9426 13.8039 13.3566L13.4756 14.3195C13.1054 15.4055 12.9203 15.9484 12.6151 15.9934C12.5331 16.0054 12.4482 15.9982 12.367 15.9721C12.0652 15.8752 11.9056 15.3027 11.5865 14.1577C11.5157 13.9038 11.4803 13.7768 11.3997 13.6798C11.3763 13.6517 11.3503 13.6257 11.3222 13.6023C11.2252 13.5217 11.0982 13.4863 10.8442 13.4155C9.69926 13.0964 9.12677 12.9368 9.02985 12.6349C9.00379 12.5538 8.99652 12.4688 9.0086 12.3868C9.05354 12.0817 9.59651 11.8966 10.6825 11.5264L11.6454 11.1981Z" stroke={4 === 2 ? "white" : "#3666EE"} />
+                      </svg>
+                    )}
+                    {step.id === 3 && (
+                      <svg width={18} height={18} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.9881 5.35604L15.6179 4.71359C15.3379 4.22772 15.198 3.98479 14.9598 3.88791C14.7216 3.79104 14.4522 3.86748 13.9135 4.02036L12.9983 4.27814C12.6544 4.35746 12.2935 4.31246 11.9794 4.15109L11.7268 4.00532L11.4574 3.83282 11.2503 3.5785 11.1356 3.27956L10.8852 2.53152C10.7205 2.03651 10.6381 1.789 10.4421 1.64743C10.2461 1.50586 9.98572 1.50586 9.46492 1.50586H8.62882C8.1081 1.50586 7.8477 1.50586 7.65165 1.64743C7.45564 1.789 7.37329 2.03651 7.20862 2.53152L6.95815 3.27956C6.84349 3.5785 6.63634 3.83282 6.36703 4.00532L6.11437 4.15109C5.5003 4.31246 5.43944 4.35746 5.09548 4.27814L4.18031 4.02036C3.64156 3.86748 3.37219 3.79104 3.134 3.88791C2.89582 3.98479 2.75584 4.22772 2.47586 4.71359L2.10568 5.35604C1.84324 5.81148 1.71202 6.0392 1.73749 6.28162C1.76296 6.52403 1.93862 6.71939 2.28994 7.11009L3.06322 7.9746C3.25222 8.21385 3.38641 8.63085 3.38641 9.00578C3.38641 9.38085 3.25227 9.7977 3.06325 10.037L2.28994 10.9016C1.93862 11.2923 1.76296 11.4876 1.73749 11.7301C1.71202 11.9725 1.84324 12.2002 2.10568 12.6556L2.47585 13.298C2.75582 13.7839 2.89582 14.0269 3.134 14.1237C3.37219 14.2206 3.64156 14.1442 4.18033 13.9913L5.09545 13.7335C5.43947 13.6541 5.5004 13.6992 6.1145 13.8606L6.36712 14.0064C6.63638 14.1789 6.84348 14.4332 6.95812 14.7321L7.20862 15.4802C7.37329 15.9752 7.45564 16.2227 7.65165 16.3643C7.8477 16.5059 8.1081 16.5059 8.62882 16.5059H9.46492C9.98572 16.5059 10.2461 16.5059 10.4421 16.3643C10.6381 16.2227 10.7205 15.9752 10.8852 15.4802L11.1357 14.7321C11.2503 14.4332 11.4574 14.1789 11.7267 14.0064L11.9793 13.8606C12.2934 13.6992 12.6543 13.6541 12.9983 13.7335L13.9135 13.9913C14.4522 14.1442 14.7216 14.2206 14.9598 14.1237C15.198 14.0269 15.3379 13.7839 15.6179 13.298L15.9881 12.6556C16.2505 12.2002 16.3817 11.9725 16.3563 11.7301C16.3308 11.4876 16.1551 11.2923 15.8038 10.9016L15.0305 10.037C14.8415 9.7977 14.7073 9.38085 14.7073 9.00578C14.7073 8.63085 14.8416 8.21385 15.0305 7.9746L15.8038 7.11009C16.1551 6.71939 16.3308 6.52403 16.3563 6.28162C16.3817 6.0392 16.2505 5.81148 15.9881 5.35604Z" stroke={4 === 3 ? "white" : "#5E5873"} strokeWidth="1.125" strokeLinecap="round" />
+                        <path d="M11.6406 9C11.6406 10.4497 10.4654 11.625 9.0156 11.625C7.56585 11.625 6.39062 10.4497 6.39062 9C6.39062 7.55025 7.56585 6.375 9.0156 6.375C10.4654 6.375 11.6406 7.55025 11.6406 9Z" stroke={4 === 3 ? "white" : "#5E5873"} strokeWidth="1.125" />
+                      </svg>
+                    )}
+                    {step.id === 4 && (
+                      <svg width={18} height={18} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.875 8.99998C1.875 5.64124 1.875 3.96186 2.91843 2.91843C3.96187 1.875 5.64124 1.875 9 1.875C12.3587 1.875 14.0381 1.875 15.0816 2.91843C16.125 3.96186 16.125 5.64124 16.125 8.99998C16.125 12.3588 16.125 14.0381 15.0816 15.0816C14.0381 16.125 12.3587 16.125 9 16.125C5.64124 16.125 3.96187 16.125 2.91843 15.0816C1.875 14.0381 1.875 12.3588 1.875 8.99998Z" stroke={step.id === 4 ? "white" : "#5E5873"} strokeWidth="1.125" />
+                        <path d="M1.875 6.75H16.125" stroke={step.id === 4 ? "white" : "#5E5873"} strokeWidth="1.125" strokeLinejoin="round" />
+                        <path d="M5.25 4.5H5.25673" stroke={step.id === 4 ? "white" : "#5E5873"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M8.25 4.5H8.25675" stroke={step.id === 4 ? "white" : "#5E5873"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M12.75 12.75C12.75 10.679 11.071 9 9 9C6.92893 9 5.25 10.679 5.25 12.75" stroke={step.id === 4 ? "white" : "#5E5873"} strokeWidth="1.125" strokeLinecap="round" />
+                        <path d="M9.5294 11.4688L8.46875 12.5294" stroke={step.id === 4 ? "white" : "#5E5873"} strokeWidth="1.125" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    )}
+                  </div>
+                  <span className="step-title">{step.title}</span>
+                </div>
+                {index < 3 && (
+                  <span className="step-divider mx-2">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B9B9C3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </span>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* 3. Filters Bar */}
+      <div className="dashboard-filters d-flex flex-wrap gap-2 mb-3">
+        <select className="form-select w-auto  form-control" style={{ minWidth: '150px' }}>
+          <option>All</option>
+        </select>
+        <div className="input-group search-input-group  border bg-white rounded">
+          <span className="input-group-text bg-white border-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B9B9C3" strokeWidth="2"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg></span>
+          <input type="text" className="form-control border-0" placeholder="Search" />
+        </div>
+      </div>
+
+      <div className="row g-3">
+        {/* Left Column (Main Dashboard) */}
+        <div className="col-lg-8 col-md-12">
+          {/* 4. Campaign Summary Card */}
+          <div className="campaign-summary-card mb-3 p-3">
+            <div className="d-flex justify-content-between align-items-center mb-4">
+              <div className="d-flex align-items-start gap-3">
+                <div className="">
+               <svg
+  width={18}
+  height={18}
+  viewBox="0 0 18 18"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M13.5 13.5C15.1569 13.5 16.5 10.8137 16.5 7.5C16.5 4.18629 15.1569 1.5 13.5 1.5C11.8431 1.5 10.5 4.18629 10.5 7.5C10.5 10.8137 11.8431 13.5 13.5 13.5Z"
+    stroke="#3666EE"
+    strokeWidth="1.125"
+  />
+  <path
+    d="M13.5 1.5C11.1727 1.5 6.34884 3.28321 3.57829 4.39029C2.30956 4.89726 1.5 6.13374 1.5 7.5C1.5 8.86627 2.30956 10.1027 3.57829 10.6097C6.34884 11.7168 11.1727 13.5 13.5 13.5"
+    stroke="#3666EE"
+    strokeWidth="1.125"
+  />
+  <path
+    d="M8.25 16.5L6.79255 15.6977C5.20573 14.8243 4.3099 13.06 4.5341 11.25"
+    stroke="#3666EE"
+    strokeWidth="1.125"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  />
+</svg>
+
+                </div>
+                <div>
+                  <h5 className="mb-1 fw-medium" style={{ fontSize: '14px', color: '#5E5873' }}>Tech Founder</h5>
+                  <div className="d-flex gap-2">
+                    <span className="dashboard-pill" style={{ background: '#F3F7FF', color: '#3664EE', padding: '2px 10px', borderRadius: '4px', fontSize: '11px', fontWeight: 500 }}>LinkedIn</span>
+                    <span className="dashboard-pill" style={{ background: '#F3F7FF', color: '#3664EE', padding: '2px 10px', borderRadius: '4px', fontSize: '11px', fontWeight: 500 }}>Email</span>
+                  </div>
+                </div>
+              </div>
+              <div className="d-flex flex-wrap align-items-center gap-3">
+                <span className="px-3 py-1 rounded d-flex align-items-center gap-2" style={{ background: '#E7F9ED', color: '#28C76F', fontSize: '12px', fontWeight: 500 }}>
+                  <div className="flex-shrink-0">
+                    <svg
+                      width={18}
+                      height={18}
+                      viewBox="0 0 18 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3.91932 8.49705L9.168 1.75988C9.57847 1.23298 10.3479 1.56093 10.3479 2.2628V7.47746C10.3479 7.89788 10.6496 8.23875 11.0218 8.23875H13.5747C14.1547 8.23875 14.4638 9.01118 14.0807 9.50295L8.832 16.2401C8.42153 16.767 7.6521 16.4391 7.6521 15.7372V10.5226C7.6521 10.1021 7.35036 9.76125 6.97815 9.76125H4.42526C3.84533 9.76125 3.5362 8.98883 3.91932 8.49705Z"
+                        stroke="#549A75"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  Running
+                </span>
+                <span className="icon-group d-flex gap-2 flex-wrap">
+<svg
+  width={15}
+  height={15}
+  viewBox="0 0 15 15"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M2.45801 4.3038C2.45801 3.43426 2.45801 2.99949 2.72814 2.72936C2.99827 2.45923 3.43304 2.45923 4.30258 2.45923C5.17211 2.45923 5.60688 2.45923 5.87702 2.72936C6.14715 2.99949 6.14715 3.43426 6.14715 4.3038V10.4524C6.14715 11.3219 6.14715 11.7567 5.87702 12.0268C5.60688 12.2969 5.17211 12.2969 4.30258 12.2969C3.43304 12.2969 2.99827 12.2969 2.72814 12.0268C2.45801 11.7567 2.45801 11.3219 2.45801 10.4524V4.3038Z"
+    stroke="#334155"
+    strokeWidth="1.32692"
+  />
+  <path
+    d="M8.60645 4.3038C8.60645 3.43426 8.60645 2.99949 8.87655 2.72936C9.14672 2.45923 9.58148 2.45923 10.451 2.45923C11.3205 2.45923 11.7553 2.45923 12.0255 2.72936C12.2956 2.99949 12.2956 3.43426 12.2956 4.3038V10.4524C12.2956 11.3219 12.2956 11.7567 12.0255 12.0268C11.7553 12.2969 11.3205 12.2969 10.451 12.2969C9.58148 12.2969 9.14672 12.2969 8.87655 12.0268C8.60645 11.7567 8.60645 11.3219 8.60645 10.4524V4.3038Z"
+    stroke="#334155"
+    strokeWidth="1.32692"
+  />
+</svg>
+
+<svg
+  width={16}
+  height={16}
+  viewBox="0 0 16 16"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M10.7215 3.00466L11.3677 2.3585C11.903 1.82321 12.7709 1.82321 13.3062 2.3585C13.8415 2.8938 13.8415 3.76168 13.3062 4.29698L12.66 4.94314M10.7215 3.00466L6.37504 7.35115C6.04379 7.68245 5.8088 8.09744 5.69519 8.55191L5.22266 10.442L7.11279 9.96949C7.56726 9.85592 7.98224 9.62089 8.31355 9.28965L12.66 4.94314M10.7215 3.00466L12.66 4.94314"
+    stroke="#334155"
+    strokeWidth="1.32692"
+    strokeLinejoin="round"
+  />
+  <path
+    d="M12.403 8.81157C12.403 10.9573 12.403 12.0301 11.8104 12.7523C11.7019 12.8844 11.5807 13.0056 11.4485 13.1141C10.7264 13.7068 9.65352 13.7068 7.50779 13.7068H7.18151C4.72004 13.7068 3.48933 13.7068 2.72465 12.9421C1.95998 12.1774 1.95996 10.9467 1.95996 8.48522V8.15887C1.95996 6.01316 1.95996 4.9403 2.55257 4.2182C2.66106 4.086 2.78229 3.96478 2.91449 3.85628C3.63659 3.26367 4.70944 3.26367 6.85516 3.26367"
+    stroke="#334155"
+    strokeWidth="1.32692"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  />
+</svg>
+
+                </span>
+              </div>
+            </div>
+
+            <div className="progress-bar-container mb-3" style={{ height: '8px', background: '#F1F0F2', borderRadius: '10px', overflow: 'hidden' }}>
+              <div className="progress-bar-fill" style={{ width: '65%', height: '100%' }}></div>
+            </div>
+
+            <div className="d-flex justify-content-between align-items-center border-top pt-3">
+              <div className="d-flex gap-4 small fw-medium">
+                <span>Created: <span className="fw-medium">8 Jan, 2026</span></span>
+                <span style={{ borderLeft: '1px solid #EBE9F1', height: '14px' }}></span>
+                <span className="text-success d-flex align-items-center gap-1">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#E7F9ED" stroke="#28C76F" strokeWidth="2"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg> CRM Connected
+                </span>
+              </div>
+              <span className="small fw-medium text-muted">74 / 200 prospects processed</span>
+            </div>
+          </div>
+
+          {/* 5. Campaign Overview Bar Chart */}
+          <div className="dashboard-card mb-3 p-3">
+            <div className="d-flex justify-content-between align-items-center mb-4">
+              <h6 className="fw-medium m-0">Campaign Overview</h6>
+              <div className="chart-selector d-flex p-1 bg-light rounded border">
+                <button className="btn btn-sm px-3 active bg-white border-0 shadow-sm" style={{ fontSize: '11px', fontWeight: 500 }}>LinkedIn</button>
+                <button className="btn btn-sm px-3 border-0" style={{ fontSize: '11px', fontWeight: 500, color: '#6E6B7B' }}>Email</button>
+              </div>
+            </div>
+
+            <div className="bar-chart-grid">
+              {[
+                { label: 'New Leads', value: '1,628', color: '#7367F0', height: '100%', colorClass: 'badge-green' },
+                { label: 'Invites Sent', value: '988', sub: '61%', color: '#A3B9D0', height: '70%', info: true, colorClass: 'badge-green' },
+                { label: 'Invites Accepted', value: '507', sub: '49%', color: '#D3EDEB', height: '40%', info: true, colorClass: 'badge-orange' },
+                { label: 'Messages Sent', value: '460', sub: '91%', color: '#ECF9F1', height: '85%', colorClass: 'badge-green' },
+                { label: 'Replies', value: '202', sub: '44%', color: '#E2F6E9', height: '35%', info: true, colorClass: 'badge-orange' }
+              ].map((item, idx) => (
+                <div key={idx} className="chart-cell">
+                  <div className="chart-label d-flex align-items-center gap-1">
+                    {item.label} {item.info && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#B9B9C3" strokeWidth="2"><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></svg>}
+                  </div>
+                  <div className="chart-value-area">
+                    <div className="chart-value">{item.value}</div>
+                    {item.sub && <div className={`chart-badge ${item.colorClass}`}>{item.sub}</div>}
+                  </div>
+                  <div className="bar-wrapper">
+                    <div className="overview-bar" style={{ background: item.color, height: item.height }}></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="row g-3 mb-3">
+            {/* 5. Campaign Actions Grid */}
+            <div className="col-lg-7">
+              <div className="dashboard-card p-3">
+                <div className="d-flex justify-content-between align-items-center mb-4">
+                  <div>
+                    <h6 className="fw-medium m-0">Campaign Actions</h6>
+                    <small className="text-muted" style={{ fontSize: '11px' }}>Execution stats & engagement signals</small>
+                  </div>
+                  <div className="chart-selector d-flex p-1 bg-light rounded border">
+                    <button className="btn btn-sm px-3 active bg-white border-0 shadow-sm" style={{ fontSize: '11px', fontWeight: 500 }}>LinkedIn</button>
+                    <button className="btn btn-sm px-3 border-0" style={{ fontSize: '11px', fontWeight: 500, color: '#6E6B7B' }}>Email</button>
+                  </div>
+                </div>
+
+                  <div className="row g-3">
+                    {[
+                      { label: 'Remaining Leads:', value: '110' },
+                      { label: 'Follow-up message:', value: '10' },
+                      { label: 'InMails Sent:', value: '20' },
+                      { label: 'Emails:', value: '89' },
+                      { label: 'Profile Viewed:', value: '45' },
+                      { label: 'Profile Followed:', value: '140' },
+                      { label: 'Skills Endorsed:', value: '50' },
+                      { label: 'Comments Added:', value: '54' }
+                    ].map((stat, sIdx) => (
+                      <div key={sIdx} className="col-lg-6 col-md-6 col-12">
+                        <div className="d-flex justify-content-between align-items-center">
+                        <span className="fw-medium" style={{ fontSize: '12px', color: '#5E5873' }}>{stat.label}</span>
+                        <span className="fw-medium" style={{ fontSize: '12px', color: '#5E5873' }}>{stat.value}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="team-footer-bar">
+                  <span className="fw-medium" style={{ fontSize: 'small', color: '#444050' }}>Team:</span>
+                  <div className="avatar-group d-flex ms-2">
+                    <img src="/image/user.png" alt="" className="avatar-overlap" />
+                    <img src="/image/user2.png" alt="" className="avatar-overlap" />
+                    <img src="/image/user.png" alt="" className="avatar-overlap" />
+                    <div className="avatar-overlap bg-light d-flex align-items-center justify-content-center fw-medium small" style={{ width: '32px', height: '32px', borderRadius: '50%', border: '2px solid #fff', marginLeft: '-8px', fontSize: '11px', color: '#6E6B7B' }}>+2</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 6. Reply Performance Bars */}
+            <div className="col-lg-5">
+              <div className="dashboard-card p-3">
+                <h6 className="fw-medium mb-1" style={{ fontSize: '14px', color: '#5E5873' }}>Reply Performance</h6>
+                <p className="mb-4" style={{ fontSize: '12px', color: '#B9B9C3' }}>Top reply channel</p>
+
+                {[
+                  { label: 'Follow-up', value: '80%', color: '#4C78FF' },
+                  { label: 'InMail', value: '32%', color: '#28C76F' },
+                  { label: 'Email', value: '11%', color: '#EA5455' },
+                  { label: 'Connection Message', value: '79%', color: '#4C78FF' }
+                ].map((item, idx) => (
+                  <div key={idx} className="perf-item mb-4">
+                    <div className="d-flex justify-content-between small fw-medium mb-1">
+                      <span style={{ color: '#5E5873' }}>{item.label}</span>
+                      <span style={{ color: item.color }}>{item.value}</span>
+                    </div>
+                    <div className="perf-bar-bg" style={{ height: '8px', background: '#F1F0F2', borderRadius: '4px' }}>
+                      <div className="perf-bar-fill" style={{ width: item.value, backgroundColor: item.color, height: '100%', borderRadius: '4px' }}></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column (Sidebar Analytics) */}
+        <div className="col-lg-4 col-md-12">
+          {/* 7. Reply Analysis Radial Chart */}
+          <div className="dashboard-card mb-3 p-3 text-center">
+            <h6 className="fw-medium mb-4 text-start">Reply Analysis</h6>
+            <div className="radial-gauge-container py-2">
+              <img src="/image/reply_analysis.png" alt="Reply Analysis Gauge" className="radial-gauge-img" />
+              <div className="radial-gauge-text">
+                <div className="radial-value">80%</div>
+                <div className="radial-desc fw-medium">Discussions</div>
+              </div>
+            </div>
+
+            <div className="radial-stats-table text-start mt-4">
+              {[
+                { label: 'Positive', value: '12%', dot: 'dot-blue' },
+                { label: 'Neutral', value: '14%', dot: 'dot-orange' },
+                { label: 'Negative', value: '8%', dot: 'dot-red' }
+              ].map((stat, idx) => (
+                <div key={idx} className={`d-flex justify-content-between py-2 ${idx < 2 ? 'border-bottom' : ''}`}>
+                  <span className="d-flex align-items-center gap-2" style={{ color: '#5E5873', fontSize: '12px', fontWeight: '500' }}>
+                    <span className={`dot ${stat.dot}`}></span> {stat.label}
+                  </span>
+                  <span className="fw-medium" style={{ color: '#5E5873', fontSize: '12px' }}>{stat.value}</span>
+                </div>
+              ))}
+              <div className="d-flex justify-content-between pt-4 fw-medium" style={{ color: '#5E5873', fontSize: '12px' }}>
+                <span>Status</span>
+                <span>Results</span>
+              </div>
+            </div>
+          </div>
+
+          {/* 8. Recent Campaign Activity Timeline */}
+          <div className="dashboard-card p-3">
+            <h6 className="fw-medium mb-4">Recent Campaign Activity</h6>
+            <div className="activity-timeline-v3">
+              {[
+                {
+                  time: '09:14 AM', title: 'Campaign started', user: 'Aman S.', color: '#4C78FF', icon: (
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3"><path d="M4.5 9.5l3.5 3.5 7.5-7.5" /></svg>
+                  )
+                },
+                {
+                  time: '10:30 AM', title: 'Reply received', from: 'Suresh K.', color: '#7367F0', icon: (
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+                  )
+                },
+                {
+                  time: '10:35 AM', title: 'Follow-up message sent', by: 'System', color: '#F85A5A', icon: (
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" /></svg>
+                  )
+                },
+                { time: '10:35 AM', title: 'Connection accepted', by: 'Suresh K. (Prospect)', color: '#D8D6DE' },
+                {
+                  time: '10:45 AM', title: 'Campaign paused', by: 'Aman S.', color: '#FF9F43', icon: (
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="white" stroke="white"><rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" /></svg>
+                  )
+                }
+              ].map((item, idx) => (
+                <div key={idx} className="timeline-item-v3">
+                  <div className="timeline-icon-v3" style={{ background: item.color }}>
+                    {item.icon}
+                  </div>
+                  <div className="timeline-content-v3">
+                    <div className="timeline-time-v3">{item.time}</div>
+                    <div className="timeline-title-v3">{item.title}</div>
+                    <div className="timeline-user-v3">by <span className="fw-medium">{item.user || item.by || item.from}</span></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <button className="btn btn-link w-100 mt-2 text-decoration-none small fw-medium d-flex align-items-center justify-content-center gap-2" style={{ color: '#3664EE', fontSize: '12px' }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+              Open Activity Log
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CampaignDashboard;

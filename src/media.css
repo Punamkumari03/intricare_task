@@ -1,0 +1,8 @@
+@media (max-width: 900px){
+  .app-section{
+    flex-direction: column;
+  }
+  .app-sidebar{
+    width: 100%;
+  }
+}
